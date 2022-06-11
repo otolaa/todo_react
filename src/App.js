@@ -1,25 +1,90 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react'
+import ToDo from './ToDo'
+import ToDoForm from './ToDoForm'
 
 function App() {
+  const [todos, setTodos] =  useState([]);
+  const [defaultID, setDefaultID] =  useState('');
+
+  useEffect(()=>{
+    const raw_ = localStorage.getItem('todos') || []
+    if (raw_.length)
+      setTodos(JSON.parse(raw_))  /* JSON.parse([]) - выдает ошибку (Uncaught SyntaxError: Unexpected end of JSON input) */
+  }, [])
+
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  const addTask = (userInput) => {
+    if (!userInput)
+      return false;
+
+    /* если есть defaultID то обновляем  и т.д. */
+    if (defaultID)  {
+      setTodos([...todos.map((todo) => 
+          todo.id === defaultID ? { ...todo, task: userInput } : {...todo })])
+    } else {
+      let newItem = {
+        id: Math.random().toString(36).substr(2,9),
+        task: userInput,
+        complete: false
+      }
+      setTodos([...todos, newItem])      
+    }
+    
+    /* обнуляем данные */
+    setDefaultID('')
+  }
+
+  const sortTask = (id, up_down) => {
+    console.log(id, up_down);
+    setTodos([...todos])
+  }
+
+  const updateTask = (id) => {
+      if (todos.find((todo) => todo.id === id)) {
+        setDefaultID(todos.find((todo) => todo.id === id).id);
+      }
+  }
+
+  const removeTask = (id) => {
+    setTodos([...todos.filter((todo) => todo.id !== id)])
+  }
+  
+  const toggleTask = (id) => {
+    setTodos([
+      ...todos.map((todo) => 
+        todo.id === id ? { ...todo, complete: !todo.complete } : {...todo }
+      )
+    ])
+  }
+
+  console.log(defaultID);
+  console.log(todos);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Todo list react: {todos.length}</h1>
       </header>
+      <ToDoForm 
+        addTask={addTask}
+        defaultInput={todos.find((todo) => todo.id === defaultID)?.task}
+      />
+      {todos.map((todo)=>{
+          return (
+            <ToDo
+              todo={todo}
+              key={todo.id}
+              toggleTask={toggleTask}
+              removeTask={removeTask}
+              updateTask={updateTask}
+              sortTask={sortTask}
+            />
+          )
+      })}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

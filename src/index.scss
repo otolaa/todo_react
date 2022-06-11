@@ -1,0 +1,115 @@
+/* CSS font */
+@charset "UTF-8";
+
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$font-color: #fff;
+$background-color: #121212;
+$background-color-small: #9a9da0;
+$black-color:#181818;
+$href-color: #dc35dc;
+$href-color-hover: #b615b6;
+$linear-gradient: linear-gradient(to right, #7f00ff, #e100ff);;
+
+/* the fonts */
+$ad-font-family: Verdana, Geneva, Sans-Serif;
+$ad-font-family-bold: Verdana, Geneva, Sans-Serif;
+$ad-font-family-narrow: Verdana, Geneva, Sans-Serif;
+
+html{ position: relative; min-height: 100%; }
+html, body { font-family: $ad-font-family; font-size:16px; } 
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: $background-color;
+  color: $font-color;
+}
+
+/**/
+.App {
+  text-align: center; display: block; margin: auto; width: 0px auto; max-width: 576px;
+
+  h1{  margin: 0rem; padding: .8rem; color: #fff; text-transform: uppercase; font-size: 1.5rem; }
+
+  & > .item-todo {
+    /**/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    /**/
+    padding: 14px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 15px;
+    background: $linear-gradient;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    & > .item-text {
+      display: inline-block;
+      cursor: pointer; font-size: 22px;
+      &.strike{ text-decoration: line-through; }
+    }
+
+    & > .item-update{
+      display: inline-block;
+      cursor: pointer; 
+      font-size: 22px; margin-left: 10px; margin-right: 10px;
+    } 
+
+    & > .item-delete{ 
+      display: inline-block;
+      cursor: pointer; 
+      font-size: 22px; margin-left: auto; margin-right: 0px;
+     }
+
+    & > .item-up, & > .item-down{
+      font-size: 22px;
+    } 
+
+  }
+
+  & > form {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+
+    & > input {
+      padding: 13px 16px;
+      border-radius: 10px 0 0 10px;
+      border: none;
+      outline: none;
+      background: #fff; width: 100%;
+      font-size: 22px;
+    }
+
+    & > button {
+      padding: 13px 16px;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      cursor: pointer;
+      outline: none;
+      background: $linear-gradient;
+      color: #fff;
+      text-transform: capitalize;
+      font-size: 22px;
+    }
+  }
+}
