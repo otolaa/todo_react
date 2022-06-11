@@ -1,3 +1,5 @@
+![todo_list_react](https://github.com/otolaa/todo_react/blob/main/public/todo_list_react.png "todo_list_react") 
+
 ## reactjs.org/docs/create-a-new-react-app.html
 npx create-react-app todo
 cd todo
