@@ -25,6 +25,7 @@ function App() {
       setTodos([...todos.map((todo) => 
           todo.id === defaultID ? { ...todo, task: userInput } : {...todo })])
     } else {
+      /* добавление элемента */
       let newItem = {
         id: Math.random().toString(36).substr(2,9),
         task: userInput,
@@ -40,6 +41,10 @@ function App() {
   const sortTask = (id, up_down) => {
     console.log(id, up_down);
     setTodos([...todos])
+  }
+
+  const dateTask = (id) => {
+    console.log(id);
   }
 
   const updateTask = (id) => {
@@ -65,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Todo list react: {todos.length}</h1>
+        <h1>Todo list react:&nbsp;{todos.length}</h1>
       </header>
       <ToDoForm 
         addTask={addTask}
@@ -80,6 +85,7 @@ function App() {
               removeTask={removeTask}
               updateTask={updateTask}
               sortTask={sortTask}
+              dateTask={dateTask}
             />
           )
       })}

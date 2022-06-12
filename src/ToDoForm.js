@@ -25,10 +25,10 @@ function ToDoForm({ addTask, defaultInput = ''}) {
 
         /* button dance */
         if (defaultInput.length) {
-            buttonRef.current.style.color = 'red'
+            buttonRef.current.style.background = 'linear-gradient(to right, #e100ff, #7f00ff)'
             buttonRef.current.textContent = 'обновить'
         } else { 
-            buttonRef.current.style.color = '#fff'
+            buttonRef.current.style.background = 'linear-gradient(to right, #7f00ff, #e100ff)'
             buttonRef.current.textContent  = 'сохранить'
         }
 

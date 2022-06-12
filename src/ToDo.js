@@ -1,6 +1,9 @@
-function ToDo({todo, toggleTask, removeTask, updateTask, sortTask}) {
+function ToDo({todo, toggleTask, removeTask, updateTask, sortTask, dateTask}) {
     return (
         <div key={todo.id} className="item-todo">
+            <div className="item-date"  onClick={()=>dateTask(todo.id)}>
+                &#8986;
+            </div>
             <div 
                 className={todo.complete ? "item-text strike" : "item-text"}
                 onClick={() => toggleTask(todo.id)}>
