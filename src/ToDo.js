@@ -21,9 +21,7 @@ function ToDo({todo, toggleTask, removeTask, updateTask, sortTask, dateTask}) {
                 <div className="item-date"
                 onClick={()=>{
                     dispatchCalendar({type: 'clickCalendar'})
-                }}>
-                    &#8986;
-                </div>
+                }}></div>
                 <div 
                     className={todo.complete ? "item-text strike" : "item-text"}
                     onClick={() => toggleTask(todo.id)}>

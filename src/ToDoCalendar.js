@@ -72,7 +72,9 @@ function ToDoCalendar({idCal, dateTask}) {
                 <thead>
                     <tr>
                         <td colSpan="7" key={`thead_td_${idCal}`}>
-                            {arr_.months}
+                            <span>&#9668;</span>
+                            <span>{arr_.months}</span>
+                            <span>&#9658;</span>
                         </td>
                     </tr>
                 </thead>
