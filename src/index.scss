@@ -85,6 +85,14 @@ body {
 
   }
 
+  & > .item-calendar{ margin-top: 15px; 
+    & > .item-calendar__table{ width: 100%; font-size: 14px; 
+      td{ padding: 7px 5px; 
+        &.day_today{ background: $linear-gradient; }
+      }
+    }
+  }
+
   & > form {
 
     display: flex;

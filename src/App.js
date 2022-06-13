@@ -29,7 +29,8 @@ function App() {
       let newItem = {
         id: Math.random().toString(36).substr(2,9),
         task: userInput,
-        complete: false
+        complete: false,
+        date: false,
       }
       setTodos([...todos, newItem])      
     }
